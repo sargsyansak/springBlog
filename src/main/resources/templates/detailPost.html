@@ -10,7 +10,7 @@
     <p th:text="Title +':&nbsp;&nbsp; ' + ${post.title}"></p>
     <p th:text="Text +':&nbsp;&nbsp;' + ${post.text}"></p>
     <p th:text="Data + ':&nbsp;&nbsp;' + ${post.date}"></p>
-    <p th:text="Category + ':&nbsp;&nbsp;' + ${post.category.name}"></p>
+    Category: <p th:each="category :${post.categories}" th:text="${category.name}"></p>
 </div>
 <br>
 <a href="/">HOME</a>
