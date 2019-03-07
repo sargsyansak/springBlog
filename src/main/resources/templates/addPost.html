@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Post</title>
+</head>
+<body>
+<form action="/post/add" method="post" enctype="multipart/form-data">
+    <input type="text" name="title" placeholder="title"><br>
+    <input type="text" name="text" placeholder="text"><br>
+    <input type="file" name="picture">
+    Category: <select name="category.id">
+    <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}">
+    </option>
+
+</select><br><br>
+    <input type="submit" value="ADD POST">
+</form>
+<br>
+<a href="/">HOME</a>
+
+</body>
+</html>

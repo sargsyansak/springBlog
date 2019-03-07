@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>Images</td>
+        <td>Title</td>
+    </tr>
+    <tr th:each="post : ${posts}">
+        <td><a th:href="@{/post/detailPost(id=${post.id})}"><img width="80" th:if="${post.picUrl != null}"
+                                                                 th:src="@{/post/getImage(picUrl=${post.picUrl})}"></a>
+        </td>
+        <td><a th:href="@{/post/detailPost(id=${post.id})}" th:text="${post.title}"></a></td>
+    </tr>
+</table>
+<br>
+<table border="1">
+    <tr>
+        <td>Categories</td>
+    </tr>
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.name}"></td>
+    </tr>
+</table>
+<a href="/post/add"> ADD POST</a><br>
+<a href="/category/add"> ADD CATEGORY</a><br>
+</body>
+</html>
