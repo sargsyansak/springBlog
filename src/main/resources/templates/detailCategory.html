@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Category</title>
+</head>
+<body>
+<div th:width="200" th:each="post : ${posts}">
+    <img th:src="@{/post/getImage(picUrl=${post.picUrl})}"><br>
+    <p th:text="Title +':&nbsp;&nbsp; ' + ${post.title}"></p><br>
+
+</div>
+<br>
+<a href="/">HOME</a>
+
+
+</body>
+</html>
