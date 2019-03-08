@@ -89,4 +89,10 @@ public class PostController {
         }
         return "redirect:/";
     }
+
+    @GetMapping("/post/delete")
+    public String deleteUser(@RequestParam("id") int id) {
+        postRepository.deleteById(id);
+        return "redirect:/";
+    }
 }

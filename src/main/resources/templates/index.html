@@ -9,12 +9,15 @@
     <tr>
         <td>Images</td>
         <td>Title</td>
+        <td>Action</td>
     </tr>
     <tr th:each="post : ${posts}">
         <td><a th:href="@{/post/detailPost(id=${post.id})}"><img width="80" th:if="${post.picUrl != null}"
                                                                  th:src="@{/post/getImage(picUrl=${post.picUrl})}"></a>
         </td>
         <td><a th:href="@{/post/detailPost(id=${post.id})}" th:text="${post.title}"></a></td>
+        <td><a th:href="@{/post/delete(id=${post.id})}">Delete</a></td>
+        td
     </tr>
 </table>
 <br>
