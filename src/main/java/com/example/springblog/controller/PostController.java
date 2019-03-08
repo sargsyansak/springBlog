@@ -1,5 +1,6 @@
 package com.example.springblog.controller;
 
+import com.example.springblog.model.Category;
 import com.example.springblog.model.Post;
 import com.example.springblog.repository.CategoryRepository;
 import com.example.springblog.repository.PostRepository;
@@ -20,6 +21,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -64,5 +66,27 @@ public class PostController {
         modelMap.addAttribute("post", post);
         return "detailPost";
 
+    }
+
+    @GetMapping("/category/detailCategory")
+    public String currentCategory(ModelMap modelMap, @RequestParam("id") int id) {
+        Category category = categoryRepository.getOne(id);
+        List<Post> posts = postRepository.findAll();
+        List<Post> getPosts = new ArrayList<>();
+        for (Post post : posts) {
+            for (Category cat : post.getCategories()) {
+                if (cat == category) {
+                    getPosts.add(post);
+                }
+
+            }
+
+        }
+        if (getPosts != null) {
+            modelMap.addAttribute("posts", getPosts);
+
+            return "detailCategory";
+        }
+        return "redirect:/";
     }
 }

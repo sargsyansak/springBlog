@@ -23,7 +23,7 @@
         <td>Categories</td>
     </tr>
     <tr th:each="category : ${categories}">
-        <td th:text="${category.name}"></td>
+        <td><a th:href="@{/category/detailCategory(id=${category.id})}" th:text="${category.name}"></a></td>
     </tr>
 </table>
 <a href="/post/add"> ADD POST</a><br>
